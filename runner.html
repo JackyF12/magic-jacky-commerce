@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="View your Sentosa Glow Night Run registration and event information." />
+    <title>Sentosa Glow Night Run | My Run</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="site-pages.css" />
+  </head>
+  <body class="page-shell runner-page">
+    <header class="page-top">
+      <a class="page-brand" href="index.html">MAGIC JACKY<span>+</span></a>
+      <nav class="page-nav" aria-label="Magic Jacky pages">
+        <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="live.html">Live</a><a href="software.html">Software</a><a href="crossborder.html">Cross-border</a><a href="tiktok.html">TikTok</a><a href="runner.html" aria-current="page">My Run</a>
+      </nav>
+    </header>
+    <main class="page-main runner-main">
+      <section class="runner-hero">
+        <p class="page-kicker">SENTOSA GLOW NIGHT RUN / RUNNER DESK</p>
+        <h1 class="page-title">Your night.<br /><em>Your run.</em></h1>
+        <p>Find your event entry, pickup code, route notes, and race-night checklist.</p>
+        <form class="order-lookup" id="orderLookup">
+          <label for="orderQuery">Order number or email</label>
+          <div><input id="orderQuery" name="orderQuery" autocomplete="email" placeholder="MJ-1124-1234 or you@email.com" required /><button type="submit">Find my run</button></div>
+          <p id="lookupMessage" role="status">Orders created in this browser appear here.</p>
+        </form>
+      </section>
+      <section class="runner-result" id="runnerResult" hidden aria-live="polite"></section>
+      <section class="runner-guides" aria-label="Event guidance">
+        <article><span>CHECK-IN</span><strong>19:00</strong><p>Bring your pickup code and photo ID.</p></article>
+        <article><span>START</span><strong>20:30</strong><p>3K and 10K depart from Sentosa Gateway.</p></article>
+        <article><span>PACK</span><strong>Reflect</strong><p>Wear a light, carry water, and keep your phone charged.</p></article>
+      </section>
+      <section class="runner-faq">
+        <div><p class="page-kicker">RACE NIGHT FAQ</p><h2>Clear before<br /><em>you go.</em></h2></div>
+        <div class="faq-list">
+          <details open><summary>What do I bring?<b>+</b></summary><p>Your pickup code, photo ID, and the gear you need to run safely after dark.</p></details>
+          <details><summary>What if it rains?<b>+</b></summary><p>Event updates are issued through the runner desk. Follow staff instructions on the night.</p></details>
+          <details><summary>Can I change distance?<b>+</b></summary><p>Distance changes depend on capacity and on-site operations. Ask the event desk before check-in.</p></details>
+        </div>
+      </section>
+    </main>
+    <footer class="page-footer">SENTOSA GLOW NIGHT RUN / RUNNER DESK</footer>
+    <script src="runner-page.js"></script>
+  </body>
+</html>

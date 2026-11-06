@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: magic-jacky-commerce
+    runtime: python
+    buildCommand: ""
+    startCommand: python server.py
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8

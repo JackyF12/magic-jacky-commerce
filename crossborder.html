@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Magic Jacky | Cross-border Operations</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="site-pages.css" />
+</head>
+<body class="page-shell">
+	<header class="page-top">
+		<a class="page-brand" href="index.html">MAGIC JACKY<span>+</span></a>
+		<nav class="page-nav" aria-label="Magic Jacky pages">
+			<a href="index.html">Home</a><a href="shop.html">Shop</a><a href="live.html">Live</a><a href="software.html">Software</a><a href="crossborder.html" aria-current="page">Cross-border</a><a href="tiktok.html">TikTok</a>
+		</nav>
+	</header>
+	<main class="page-main">
+		<section class="page-hero dark">
+			<div>
+				<p class="page-kicker">CROSS-BORDER COMMERCE SOLUTION</p>
+				<h1 class="page-title">Every order knows<br /><em>where it is going.</em></h1>
+				<p class="page-copy">From local payment methods to duty visibility and overseas fulfilment, Magic Jacky turns a multi-market night-run drop into one coordinated operating model.</p>
+			</div>
+			<div class="page-hero-card"><span>APAC DELIVERY DESK</span><strong>08</strong><span>languages supported across shopper, creator, and support workflows</span></div>
+		</section>
+		<section class="content-grid">
+			<article class="content-card"><span>PAY</span><h2>Local checkout</h2><p>Multi-currency planning, local payment options, fraud controls, and transparent settlement reporting for each market.</p></article>
+			<article class="content-card"><span>SHIP</span><h2>Fulfilment routes</h2><p>Supply-chain connections, customs-ready documentation, carrier routing, overseas warehouses, and return coordination.</p></article>
+			<article class="content-card"><span>SERVE</span><h2>After-sales support</h2><p>Localized delivery promises, duty and tax visibility, customer support, exchanges, and consumer protection workflows.</p></article>
+		</section>
+		<section class="shipping-estimator" aria-labelledby="estimatorTitle">
+			<div>
+				<p class="page-kicker">INTERACTIVE DELIVERY DESK</p>
+				<h2 id="estimatorTitle">Estimate before<br /><em>you ship.</em></h2>
+				<p>Choose a destination and runner product to create a transparent delivery, duty, and arrival estimate.</p>
+			</div>
+			<form id="shippingEstimator" class="shipping-form">
+				<label>DESTINATION<select name="market"><option value="sg">Singapore</option><option value="tw">Taiwan</option><option value="jp">Japan</option><option value="my">Malaysia</option></select></label>
+				<label>PRODUCT VALUE (USD)<input name="value" type="number" min="1" value="34" required /></label>
+				<label>ITEMS<input name="quantity" type="number" min="1" max="10" value="1" required /></label>
+				<button type="submit">Calculate delivery</button>
+				<output id="shippingResult" class="shipping-result">Choose a market to see the demo estimate.</output>
+				<div class="shipping-links"><a href="shop.html">Open Marketplace</a><a href="fx.html">Plan FX settlement</a></div>
+			</form>
+		</section>
+		<section class="dark-band">
+			<p class="page-kicker">TRUST BY DESIGN</p>
+			<h2>International trade needs guardrails.</h2>
+			<p>Our operation model supports GDPR-aligned data practices, PCI DSS-aware payment controls, AML screening support, transparent consumer terms, and tax and duty information before checkout.</p>
+		</section>
+		<section class="compliance-detail" aria-labelledby="complianceTitle">
+			<p class="page-kicker">INTERNATIONAL REGULATORY COMPLIANCE</p>
+			<h2 id="complianceTitle" class="page-title">Compliance is part of<br /><em>the order flow.</em></h2>
+			<div class="content-grid">
+				<article class="content-card"><span>DATA & PRIVACY</span><h2>Consent and control</h2><p>GDPR-aligned consent records, purpose limitation, data-minimization reviews, access controls, retention schedules, and a process for data-subject requests.</p></article>
+				<article class="content-card"><span>PAYMENTS & AML</span><h2>Screen before settlement</h2><p>PCI DSS-aware payment design, KYC and sanctions-screening support, fraud monitoring, transaction-review paths, and auditable exception handling.</p></article>
+				<article class="content-card"><span>TRADE & CONSUMER</span><h2>Clear at checkout</h2><p>HS-code and product-data checks, tax and duty estimates, restricted-goods review, local cancellation and returns paths, and market-specific product information.</p></article>
+			</div>
+		</section>
+	</main>
+	<footer class="page-footer">MAGIC JACKY / CROSS-BORDER OPERATIONS</footer>
+	<script src="crossborder-page.js"></script>
+</body>
+</html>

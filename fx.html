@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Magic Jacky DBS foreign exchange planning dashboard." />
+    <title>Magic Jacky | DBS FX Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .fx-hero{padding:105px 9vw 78px;background:linear-gradient(125deg,#06111c,#173b4c);color:#fff}.fx-hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:8vw;align-items:end}.fx-hero h1,.fx-section h2{margin:0;font:600 clamp(48px,5.5vw,78px)/1.04 var(--serif);letter-spacing:-2.5px}.fx-hero h1 em{color:var(--neon)}.fx-hero p:not(.eyebrow){max-width:530px;line-height:1.75;color:#c7d7d4}.fx-stat{padding:26px;background:var(--neon);color:var(--night);box-shadow:8px 8px 0 var(--signal)}.fx-stat span{font:500 10px var(--mono);letter-spacing:1px}.fx-stat strong{display:block;margin:10px 0;font:600 52px var(--serif)}.fx-section{padding:95px 9vw;background:#edf3ee}.fx-head{display:grid;grid-template-columns:1fr .8fr;gap:8vw;align-items:end}.fx-head p{margin:0;line-height:1.75}.fx-board{margin-top:52px;background:#fff;border:1px solid var(--line);box-shadow:8px 8px 0 var(--night)}.fx-board-head{display:flex;justify-content:space-between;gap:20px;padding:20px 24px;border-bottom:1px solid var(--line)}.fx-board-head strong{display:block;font:600 25px var(--serif)}.fx-board-head span{font:10px var(--mono);color:#52706a}.fx-table{width:100%;border-collapse:collapse}.fx-table th{padding:13px 22px;background:#e4efea;text-align:right;font:500 10px var(--mono);letter-spacing:.7px}.fx-table td{padding:16px 22px;border-top:1px solid var(--line);text-align:right;font:12px var(--mono)}.fx-table th:first-child,.fx-table td:first-child{text-align:left}.fx-table td:first-child{font-family:var(--sans);font-weight:800}.fx-table small{display:block;margin-top:3px;color:#66746f;font:10px var(--mono)}.fx-note{margin:0;padding:14px 22px;background:#fff5cb;font-size:10px;line-height:1.6}.fx-calc{display:grid;grid-template-columns:1fr 1.3fr;gap:8vw;padding:90px 9vw;background:#f7d15b}.fx-calc h2{margin:0;font:600 clamp(38px,4vw,60px)/1.05 var(--serif)}.fx-form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;padding:24px;background:#0a1c29;color:#fff}.fx-form label{display:grid;gap:7px;font:10px var(--mono);letter-spacing:.6px}.fx-form input,.fx-form select{height:42px;padding:0 10px;border:0;font:13px var(--mono)}.fx-form button{height:42px;padding:0 15px;border:0;background:var(--neon);color:var(--night);font-weight:800}.fx-result{grid-column:1/-1;margin:0;padding:12px;background:#163846;font:12px/1.6 var(--mono)}@media(max-width:800px){.fx-hero,.fx-section,.fx-calc{padding:75px 7vw}.fx-hero-inner,.fx-head,.fx-calc{grid-template-columns:1fr}.fx-stat{margin-top:20px}.fx-board{overflow:auto}.fx-table{min-width:620px}.fx-form{grid-template-columns:1fr}.fx-form button{width:100%}}
+    </style>
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="index.html">MAGIC JACKY<span>+</span></a><div class="site-switcher" aria-label="Main website pages"><a href="index.html">Commerce Assignment</a><a href="fx.html" aria-current="page">DBS FX Analysis</a></div><a class="nav-cta" href="index.html#contact">Talk to Jacky AI</a></header>
+    <main>
+      <section class="fx-hero"><div class="fx-hero-inner"><div><p class="eyebrow">MAGIC JACKY / DBS FX DESK</p><h1>Know the rate.<br /><em>Plan the run.</em></h1><p>Indicative foreign-exchange planning for a sports brand moving inventory, creator fees, and cross-border customer payments across Asia.</p></div><div class="fx-stat"><span>APAC SETTLEMENT VIEW</span><strong>5</strong><small>currencies in the planning board</small></div></div></section>
+      <section class="fx-section"><div class="fx-head"><div><p class="eyebrow">DBS BANK / RATE BOARD</p><h2>Make the numbers<br /><em>easy to read.</em></h2></div><p>Compare the cash and spot reference values used in operational planning. Final rates, spreads, fees, and transaction conditions must be confirmed with DBS Bank.</p></div><div class="fx-board"><div class="fx-board-head"><div><span id="provider">Loading provider...</span><strong>Foreign Exchange Dashboard</strong></div><span id="updated">Loading rates...</span></div><table class="fx-table"><thead><tr><th>Currency</th><th>Cash buy</th><th>Cash sell</th><th>Spot buy</th><th>Spot sell</th></tr></thead><tbody id="rateRows"><tr><td colspan="5">Loading rate data...</td></tr></tbody></table><p class="fx-note" id="note"></p></div></section>
+      <section class="fx-calc"><div><p class="eyebrow">SETTLEMENT PLANNER</p><h2>Turn a quote into<br /><em>a clear estimate.</em></h2></div><form class="fx-form" id="calculator"><label>Foreign amount<input id="amount" type="number" min="0" step="0.01" value="1000" required /></label><label>Currency<select id="currency"><option value="USD">USD</option><option value="JPY">JPY (100)</option><option value="EUR">EUR</option><option value="SGD">SGD</option><option value="CNY">CNY</option></select></label><button>Estimate TWD</button><output class="fx-result" id="result">Load a rate to calculate settlement.</output></form></section>
+    </main>
+    <footer><a class="brand" href="index.html">MAGIC JACKY<span>+</span></a><span>Night-run commerce, planned across borders. © 2026</span><div><a href="index.html#compliance">Trust center</a></div></footer>
+    <script>
+      let rates = [];
+      async function loadRates() {
+        const response = await fetch('/api/dbs-rates');
+        const data = await response.json();
+        rates = data.rates;
+        document.querySelector('#provider').textContent = `${data.provider} / Demo data`;
+        document.querySelector('#updated').textContent = data.updated_at;
+        document.querySelector('#rateRows').innerHTML = rates.map(rate => `<tr><td>${rate.currency}<small>${rate.name}</small></td><td>${rate.cash_buy.toFixed(2)}</td><td>${rate.cash_sell.toFixed(2)}</td><td>${rate.spot_buy.toFixed(2)}</td><td>${rate.spot_sell.toFixed(2)}</td></tr>`).join('');
+        document.querySelector('#note').textContent = 'Demo snapshot for coursework. It is not a DBS Bank transaction quote.';
+      }
+      document.querySelector('#calculator').addEventListener('submit', event => { event.preventDefault(); const amount = Number(document.querySelector('#amount').value); const rate = rates.find(item => item.currency === document.querySelector('#currency').value); document.querySelector('#result').textContent = rate && amount > 0 ? `${amount.toLocaleString()} ${rate.currency} at spot sell ${rate.spot_sell.toFixed(2)} is approximately NT$${(amount * rate.spot_sell).toLocaleString('en-US', {maximumFractionDigits: 2})}.` : 'Enter a positive amount after rate data loads.'; });
+      loadRates().catch(() => { document.querySelector('#note').textContent = 'Rate data is temporarily unavailable.'; });
+    </script>
+  </body>
+</html>
