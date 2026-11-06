@@ -3,6 +3,12 @@ const serviceNav = document.querySelector('.page-nav');
 if (serviceNav && !serviceNav.querySelector('[href="runner.html"]')) {
   serviceNav.insertAdjacentHTML('beforeend', '<a href="runner.html">My Run</a>');
 }
+if (serviceNav && window.matchMedia('(max-width: 600px)').matches) {
+  const activeServiceLink = serviceNav.querySelector('[aria-current="page"]');
+  if (activeServiceLink) {
+    window.requestAnimationFrame(() => activeServiceLink.scrollIntoView({ block: 'nearest', inline: 'center' }));
+  }
+}
 function showToast(message) {
   toast.textContent = message;
   toast.classList.add('show');
