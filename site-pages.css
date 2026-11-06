@@ -66,6 +66,7 @@
 .home-page .race-atlas{padding:0}
 .home-page .sentosa-route-map{grid-template-columns:minmax(0,.92fr) minmax(0,1.3fr);width:auto;margin:0;padding:96px 9vw;background:#dff3ea;border-top:0}
 .home-page .sentosa-route-map iframe{min-height:500px}
+@media(max-width:600px){.home-page .sentosa-route-map{grid-template-columns:1fr;padding:62px 5vw}.home-page .sentosa-route-map iframe{min-height:300px}.home-page .sentosa-race-facts{grid-template-columns:repeat(3,minmax(0,1fr))}.home-page .sentosa-race-facts strong{font-size:20px;white-space:nowrap}}
 .sentosa-route-copy>p:not(.eyebrow){max-width:460px;margin:0;line-height:1.7}
 .sentosa-race-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:30px 0 18px;border-block:1px solid rgba(4,19,31,.2)}
 .sentosa-race-facts div{padding:14px 12px 14px 0;border-right:1px solid rgba(4,19,31,.2)}
