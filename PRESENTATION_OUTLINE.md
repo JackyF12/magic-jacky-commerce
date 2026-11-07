@@ -15,8 +15,9 @@ Public demo: https://magic-jacky-commerce.onrender.com
 
 ## Slide 3 - Live Commerce and UX (Presenter 1)
 - `live.html` presents multilingual live-drop schedules and routes the selected live journey to the TikTok live-kit demonstration.
+- The Live Commerce Demo lets the presenter start or pause a live room, switch market and host language, pin products, reserve demo stock, send audience questions, and transfer the live bag into Shop.
 - `tiktok.html` lets the user choose a creator-led kit and transfers its products to the Shop through browser storage.
-- This demonstrates the customer flow from content selection to basket, rather than a real video stream or TikTok API integration.
+- This demonstrates the customer flow from content selection to basket; it is a browser-based simulation rather than a real video stream or TikTok API integration.
 
 ## Slide 4 - Cross-Border Operations (Presenter 2)
 - `crossborder.html` organizes the operating model into PAY, SHIP, and SERVE.
@@ -35,13 +36,12 @@ Public demo: https://magic-jacky-commerce.onrender.com
 - Gemini or OpenAI is used only when a configured key is available; otherwise a topic-aware local fallback responds. Describe this as an AI-ready assistant, not a guarantee of ChatGPT availability.
 
 ## Slide 7 - Privacy, Security, and Compliance (Presenter 3)
-- The site implements a persistent cookie choice, feedback form, input length limits for chat, server-side path/history sanitization, and a Privacy Center.
-- The Privacy Center can export or delete the prototype's local browser data, including feedback, runner entries, and generated plans.
+- The site implements a persistent cookie choice, feedback form, input length limits for chat, and server-side path/history sanitization.
 - It explains GDPR-aligned consent, AML/KYC-aware process design, fraud controls, duty visibility, and consumer-protection workflows.
 - Accurate wording: security and PCI/AML badges are coursework demo representations of intended controls. The application does not process payments, conduct KYC, or hold a PCI-DSS certification.
 
 ## Slide 8 - Engagement, Design, and Deployment (Presenter 3)
-- Demonstrate the feedback modal, one-to-five rating, immediate local confirmation, child-page AI widget, Privacy Center, responsive navigation, and the deployed Render URL.
+- Demonstrate the feedback modal, one-to-five rating, immediate local confirmation, child-page AI widget, responsive navigation, and the deployed Render URL.
 - Feedback and runner entries remain in browser storage in this prototype; a secure CRM/database is a next-step production requirement.
 
 ## Slide 9 - Conclusion and Takeaways (Presenter 3)

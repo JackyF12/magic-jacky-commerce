@@ -190,6 +190,14 @@
     update();
   }
 
+  function importLiveBagIntoShop() {
+    if (!location.pathname.endsWith('/shop.html')) return;
+    const productNames = readDemoData('magicJackyLiveCart', []);
+    if (!Array.isArray(productNames) || !productNames.length) return;
+    productNames.forEach((name) => document.querySelector(`.add-product[data-name="${CSS.escape(name)}"]`)?.click());
+    localStorage.removeItem('magicJackyLiveCart');
+  }
+
   function addFulfilmentConsole() {
     if (!location.pathname.endsWith('/crossborder.html')) return;
     const anchor = document.querySelector('.shipping-estimator');
@@ -229,6 +237,88 @@
     });
   }
 
+  function addLiveCommerceConsole() {
+    if (!location.pathname.endsWith('/live.html')) return;
+    const anchor = document.querySelector('.dark-band') || document.querySelector('.content-grid');
+    if (!anchor) return;
+    const liveConsole = document.createElement('section');
+    liveConsole.className = 'live-demo';
+    liveConsole.innerHTML = '<div class="live-stage" aria-label="Interactive live commerce preview"><div class="live-stage-head"><span class="live-status">OFF AIR</span><strong data-live-clock>00:00</strong><span data-live-viewers>128 viewers</span></div><div class="live-stage-copy"><p>Sentosa Glow Night Run</p><h2>Night kit<br /><em>live drop.</em></h2><span data-live-market>Singapore fulfilment desk</span></div><div class="live-pinned-product"><span>PINNED PRODUCT</span><strong data-live-product-name>3K Night Party Entry Kit</strong><small data-live-product-detail>Bib, timing tag, and event guide</small><b data-live-stock>12 left</b><button type="button" data-live-buy>Add to live bag</button></div></div><div class="live-console-panel"><p class="enhancement-eyebrow">INTERACTIVE LIVE COMMERCE DEMO</p><h2>Run the room.<br /><em>Capture the order.</em></h2><form class="live-control-form"><label>Market<select name="market"><option value="Singapore">Singapore</option><option value="Japan">Japan</option><option value="Taiwan">Taiwan</option></select></label><label>Host language<select name="language"><option>English / Japanese</option><option>Mandarin / Thai</option><option>Korean / English</option></select></label><button type="submit" data-live-toggle>Start live demo</button></form><div class="live-product-pins"><button type="button" class="active" data-live-pin="0">3K Entry Kit</button><button type="button" data-live-pin="1">LED Armband</button><button type="button" data-live-pin="2">Soft Flask 500</button></div><div class="live-chat-feed" aria-live="polite"><p><b>Host:</b> Welcome to the Sentosa night-run kit drop.</p><p><b>Moderator:</b> Pinned product is ready to add to your bag.</p></div><form class="live-question-form"><input aria-label="Ask the live host" maxlength="140" placeholder="Ask the host about the kit" required /><button type="submit">Send</button></form><button type="button" class="live-shop-link" data-live-shop>Open live bag in Shop</button><p class="live-result" aria-live="polite">Select a market, start the demo, then pin a product.</p></div>';
+    anchor.before(liveConsole);
+    const products = [
+      { name: '3K Night Party Entry Kit', detail: 'Bib, timing tag, and event guide', stock: 12 },
+      { name: 'LED Route Armband', detail: 'Rechargeable red and white light', stock: 18 },
+      { name: 'Soft Flask 500', detail: 'Collapsible hydration bottle', stock: 24 },
+    ];
+    let activeProduct = 0;
+    let isLive = false;
+    let seconds = 0;
+    const stage = liveConsole.querySelector('.live-stage');
+    const result = liveConsole.querySelector('.live-result');
+    const clock = liveConsole.querySelector('[data-live-clock]');
+    const renderProduct = () => {
+      const product = products[activeProduct];
+      liveConsole.querySelector('[data-live-product-name]').textContent = product.name;
+      liveConsole.querySelector('[data-live-product-detail]').textContent = product.detail;
+      liveConsole.querySelector('[data-live-stock]').textContent = `${product.stock} left`;
+      liveConsole.querySelectorAll('[data-live-pin]').forEach((button, index) => button.classList.toggle('active', index === activeProduct));
+    };
+    const updateClock = () => {
+      if (!isLive) return;
+      seconds += 1;
+      const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
+      clock.textContent = `${minutes}:${String(seconds % 60).padStart(2, '0')}`;
+      liveConsole.querySelector('[data-live-viewers]').textContent = `${128 + Math.min(seconds * 3, 92)} viewers`;
+    };
+    window.setInterval(updateClock, 1000);
+    liveConsole.querySelector('.live-control-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const market = String(formData.get('market'));
+      isLive = !isLive;
+      stage.classList.toggle('is-live', isLive);
+      liveConsole.querySelector('.live-status').textContent = isLive ? 'ON AIR' : 'OFF AIR';
+      event.currentTarget.querySelector('[data-live-toggle]').textContent = isLive ? 'Pause live demo' : 'Resume live demo';
+      liveConsole.querySelector('[data-live-market]').textContent = `${market} fulfilment desk`;
+      result.textContent = isLive ? `${market} live room started with ${formData.get('language')} host coverage.` : 'Live demo paused. Product pins remain ready.';
+    });
+    liveConsole.querySelectorAll('[data-live-pin]').forEach((button) => button.addEventListener('click', () => {
+      activeProduct = Number(button.dataset.livePin);
+      renderProduct();
+      result.textContent = `${products[activeProduct].name} is now pinned in the live room.`;
+    }));
+    liveConsole.querySelector('[data-live-buy]').addEventListener('click', () => {
+      const product = products[activeProduct];
+      if (!product.stock) {
+        result.textContent = 'This demo item is sold out. Pin another product.';
+        return;
+      }
+      const liveBag = readDemoData('magicJackyLiveCart', []);
+      liveBag.push(product.name);
+      localStorage.setItem('magicJackyLiveCart', JSON.stringify(liveBag));
+      product.stock -= 1;
+      renderProduct();
+      result.textContent = `${product.name} added to the live bag. Stock is reserved for this browser demo.`;
+    });
+    liveConsole.querySelector('.live-question-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const input = event.currentTarget.querySelector('input');
+      const question = input.value.trim();
+      if (!question) return;
+      const message = document.createElement('p');
+      const name = document.createElement('b');
+      name.textContent = 'Guest: ';
+      message.append(name, question);
+      liveConsole.querySelector('.live-chat-feed').append(message);
+      input.value = '';
+      result.textContent = 'Question sent to the moderator queue.';
+    });
+    liveConsole.querySelector('[data-live-shop]').addEventListener('click', () => {
+      location.href = 'shop.html?source=live-demo';
+    });
+    renderProduct();
+  }
+
   function addIntegrationBuilder() {
     if (!location.pathname.endsWith('/software.html')) return;
     const anchor = document.querySelector('.two-column') || document.querySelector('.content-grid');
@@ -245,42 +335,15 @@
     });
   }
 
-  function addPrivacyCenter() {
-    const dialog = document.createElement('dialog');
-    dialog.className = 'privacy-center';
-    dialog.innerHTML = '<button type="button" class="modal-close" aria-label="Close privacy center">x</button><p class="enhancement-eyebrow">PRIVACY CENTER</p><h2>Your demo data,<br /><em>under control.</em></h2><p>This coursework prototype stores consent, feedback, orders, and plans only in this browser.</p><div class="privacy-actions"><button type="button" data-export>Download my demo data</button><button type="button" data-delete>Delete my demo data</button></div><p class="form-status" aria-live="polite"></p>';
-    document.body.append(dialog);
-    const keys = ['magicJackyCookieConsent', 'magicJackyLastFeedback', 'magicJackyFeedbackDraft', 'sentosaGlowNightRunOrders', 'magicJackyCheckoutMarket', 'magicJackyFulfilmentPlan', 'magicJackyCampaignBrief', 'magicJackyIntegrationScope'];
-    dialog.querySelector('.modal-close').addEventListener('click', () => dialog.close());
-    dialog.querySelector('[data-export]').addEventListener('click', () => {
-      const data = Object.fromEntries(keys.map((key) => [key, readDemoData(key, localStorage.getItem(key))]));
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
-      link.download = 'magic-jacky-demo-data.json';
-      link.click();
-      URL.revokeObjectURL(link.href);
-      dialog.querySelector('.form-status').textContent = 'Demo data export prepared.';
-    });
-    dialog.querySelector('[data-delete]').addEventListener('click', () => {
-      keys.forEach((key) => localStorage.removeItem(key));
-      dialog.querySelector('.form-status').textContent = 'All Magic Jacky demo data was removed from this browser.';
-    });
-    const trigger = document.createElement('button');
-    trigger.type = 'button';
-    trigger.className = 'privacy-launch';
-    trigger.textContent = 'Privacy';
-    trigger.addEventListener('click', () => dialog.showModal());
-    document.body.append(trigger);
-  }
-
   createCookieBanner();
   createFeedbackModal();
   addTrustBadges();
   addCrossborderCta();
   addChildChat();
   addShopMarketPreview();
+  importLiveBagIntoShop();
   addFulfilmentConsole();
   addCampaignPlanner();
   addIntegrationBuilder();
-  addPrivacyCenter();
+  addLiveCommerceConsole();
 })();
