@@ -176,7 +176,7 @@ class WebsiteRequestHandler(SimpleHTTPRequestHandler):
             return False
 
         content = candidate.read_text(encoding="utf-8")
-        content = content.replace("</head>", '<link rel="stylesheet" href="site-enhancements.css?v=home-title-blink" /></head>')
+        content = content.replace("</head>", '<link rel="stylesheet" href="site-enhancements.css?v=home-title-emphasis" /></head>')
         content = content.replace("</body>", '<script src="site-enhancements.js"></script></body>')
         body = content.encode("utf-8")
         self.send_response(200)
