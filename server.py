@@ -12,7 +12,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import ClassVar
 from urllib.error import URLError
-from urllib.parse import urlencode
+from urllib.parse import unquote, urlencode, urlparse
 from urllib.request import Request, urlopen
 
 
@@ -36,9 +36,11 @@ ASSISTANT_INSTRUCTIONS = (
     "You are Jacky AI, the warm and practical digital concierge for Magic Jacky, "
     "a Taiwan-based cross-border commerce company. Answer naturally and conversationally, "
     "using short paragraphs and concrete next steps. Help with event orders, global shipping, "
-    "live commerce, TikTok creators, software, and compliance. Ask one focused follow-up question "
-    "when needed. Do not invent order status or legal, financial, or trading advice; for FX, explain "
-    "that live rates and final terms must be confirmed with the bank."
+    "Sentosa Glow Night Run kits, TikTok Shop creator operations, custom commerce software, and "
+    "compliance. Explain dynamic FX settlement planning, AML/KYC-aware workflows, fraud controls, "
+    "and cross-border fulfilment in practical terms. Ask one focused follow-up question when needed. "
+    "Do not invent order status or legal, financial, or trading advice; for FX, explain that live rates "
+    "and final terms must be confirmed with the bank or settlement provider."
 )
 
 
@@ -46,6 +48,8 @@ def local_assistant_reply(question: str) -> str:
     text = question.lower()
     if ("3k" in text and "10k" in text) or "3k" in text and "10 k" in text:
         return "Choose 3K for a relaxed first night run or a social pace. Choose 10K if you already run regularly and want the full Sentosa route. Both entry kits include your bib, timing tag, and event guide."
+    if any(word in text for word in ("aml", "kyc", "fraud", "sanctions", "防洗錢", "風控")):
+        return "For a cross-border live launch, Magic Jacky supports AML and fraud-control workflows with KYC-aware onboarding, sanctions-screening support, transaction review paths, and auditable exception handling. FX settlement can be estimated dynamically in the dashboard, but final quotes, fees, and bank terms must be confirmed with the settlement provider."
     if any(phrase in text for phrase in ("my order", "an order", "event order", "collection", "訂單", "領取")):
         return "For an event order, keep the order number ready for kit collection. Our support team can help confirm delivery status, collection details, and cross-border fulfilment requirements."
     if any(word in text for word in ("shipping", "delivery", "logistics", "fulfilment", "物流", "配送")):
@@ -158,6 +162,30 @@ class WebsiteRequestHandler(SimpleHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store")
         super().end_headers()
 
+    def serve_enhanced_html(self) -> bool:
+        request_path = unquote(urlparse(self.path).path)
+        relative_path = "index.html" if request_path == "/" else request_path.lstrip("/")
+        candidate = (PROJECT_ROOT / relative_path).resolve()
+
+        try:
+            candidate.relative_to(PROJECT_ROOT)
+        except ValueError:
+            return False
+
+        if candidate.suffix != ".html" or not candidate.is_file():
+            return False
+
+        content = candidate.read_text(encoding="utf-8")
+        content = content.replace("</head>", '<link rel="stylesheet" href="site-enhancements.css" /></head>')
+        content = content.replace("</body>", '<script src="site-enhancements.js"></script></body>')
+        body = content.encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+        return True
+
     def do_GET(self) -> None:
         if self.path.split("?", 1)[0] == "/api/dbs-rates":
             body = json.dumps(DBS_RATE_SNAPSHOT).encode("utf-8")
@@ -169,10 +197,13 @@ class WebsiteRequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write(body)
             return
 
+        if self.serve_enhanced_html():
+            return
+
         super().do_GET()
 
     def do_POST(self) -> None:
-        if self.path.split("?", 1)[0] != "/api/assistant":
+        if self.path.split("?", 1)[0] not in {"/api/assistant", "/api/chat"}:
             self.send_error(404, "File not found")
             return
 
