@@ -77,6 +77,36 @@
 .subpage-chat-panel input { min-width: 0; border: 1px solid rgba(7, 19, 31, 0.3); padding: 9px; font: 13px var(--sans, Arial, sans-serif); }
 .subpage-chat-panel form button { border: 0; padding: 0 11px; background: var(--enhance-coral); color: var(--enhance-ink); font-weight: 800; cursor: pointer; }
 
+.demo-tool { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; margin: 56px 0 0; padding: 38px; background: #102b46; color: #fff; box-shadow: 8px 8px 0 var(--enhance-lime); font-family: var(--sans, Arial, sans-serif); }
+.demo-tool h2 { margin: 0; font: 600 clamp(32px, 4vw, 52px)/1.05 var(--serif, serif); }
+.demo-tool h2 em { color: var(--enhance-lime); }
+.demo-tool > div > p:not(.enhancement-eyebrow) { max-width:38ch; line-height: 1.6; }
+.demo-tool .enhancement-eyebrow { color: var(--enhance-lime); }
+.demo-tool form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-content: start; }
+.demo-tool label { display: grid; gap: 6px; color: #dce8e3; font: 700 10px var(--mono, monospace); letter-spacing: .7px; }
+.demo-tool input, .demo-tool select { width: 100%; min-width: 0; height: 42px; border: 0; padding: 0 10px; background: #fff; color: var(--enhance-ink); font: 13px var(--sans, Arial, sans-serif); }
+.demo-tool button, .privacy-actions button { min-height: 42px; border: 0; padding: 10px 14px; background: var(--enhance-lime); color: var(--enhance-ink); font: 800 11px var(--mono, monospace); cursor: pointer; }
+.demo-tool form > button { grid-column: 1 / -1; }
+.demo-tool output { grid-column: 1 / -1; display: grid; gap: 8px; min-height: 72px; padding: 15px; background: #07131f; color: #dbeae4; font: 12px/1.5 var(--mono, monospace); }
+.demo-tool output strong { color: var(--enhance-lime); font-size: 13px; }
+.integration-builder fieldset { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; grid-column: 1 / -1; margin: 0; padding: 14px; border: 1px solid rgba(216, 255, 63, .42); }
+.integration-builder fieldset label { display: flex; align-items: center; gap: 7px; }
+.integration-builder input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--enhance-lime); }
+
+.market-preview { display: grid; gap: 8px; margin: 14px 0; padding: 14px; background: #e6f0eb; color: var(--enhance-ink); }
+.market-preview label { display: grid; gap: 6px; font: 700 10px var(--mono, monospace); letter-spacing: .6px; }
+.market-preview select { width: 100%; border: 1px solid rgba(7, 19, 31, .3); padding: 9px; background: #fff; color: var(--enhance-ink); font: 12px var(--sans, Arial, sans-serif); }
+.market-preview-result { min-height: 18px; margin: 0; color: var(--enhance-teal); font: 11px/1.45 var(--mono, monospace); }
+
+.privacy-launch { position: fixed; z-index: 80; left: 20px; bottom: 62px; padding: 10px 13px; border: 1px solid var(--enhance-ink); background: var(--enhance-lime); color: var(--enhance-ink); box-shadow: 4px 4px 0 var(--enhance-coral); font: 800 10px var(--mono, monospace); cursor: pointer; }
+.privacy-center { width: min(520px, calc(100vw - 28px)); border: 0; border-top: 8px solid var(--enhance-teal); padding: 30px; background: #fff; color: var(--enhance-ink); box-shadow: 12px 12px 0 var(--enhance-lime); font-family: var(--sans, Arial, sans-serif); }
+.privacy-center::backdrop { background: rgba(7, 19, 31, .74); }
+.privacy-center h2 { margin: 0; font: 600 36px/1.05 var(--serif, serif); }
+.privacy-center h2 em { color: var(--enhance-teal); }
+.privacy-center > p:not(.enhancement-eyebrow):not(.form-status) { line-height: 1.6; }
+.privacy-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 14px; }
+.privacy-actions button:last-child { background: var(--enhance-coral); }
+
 /* Match the Shop page's large title and animated italic emphasis. */
 body.home-page .poster-event-bar > span:first-child { color: #fff; font: 600 clamp(36px, 4.7vw, 68px)/1.02 var(--serif); font-style: normal; letter-spacing: 0; white-space: nowrap; animation: none; }
 body.home-page .poster-event-bar > span:first-child em { display: inline-block; background: linear-gradient(100deg, #007f73, #d8ff3f, #ff6b5d, #007f73); background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; animation: title-shimmer 4s ease-in-out infinite, title-flicker 3.8s steps(1, end) infinite; }
@@ -96,8 +126,14 @@ body.page-shell:has(.page-nav a[href='tiktok.html'][aria-current='page']) .page-
   .cookie-actions { align-items: stretch; }
   .cookie-actions button { flex: 1; }
   .feedback-launch { left: 12px; bottom: 12px; }
+  .privacy-launch { left: 12px; bottom: 54px; }
   .subpage-chat { right: 12px; bottom: 12px; }
   .crossborder-cta { margin-inline: -5vw; padding: 36px 5vw; }
   .feedback-modal { padding: 26px 20px; }
   .feedback-modal h2 { font-size: 31px; }
+  .demo-tool { grid-template-columns: 1fr; margin-top: 42px; padding: 28px 20px; }
+  .demo-tool form { grid-template-columns: 1fr; }
+  .demo-tool output { grid-column: auto; }
+  .integration-builder fieldset { grid-column: auto; }
+  .privacy-center { padding: 26px 20px; }
 }
