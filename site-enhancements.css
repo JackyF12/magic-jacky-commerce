@@ -78,11 +78,11 @@
 .subpage-chat-panel form button { border: 0; padding: 0 11px; background: var(--enhance-coral); color: var(--enhance-ink); font-weight: 800; cursor: pointer; }
 
 /* Match the Shop page's large title and animated italic emphasis. */
-body.home-page .poster-event-bar > span:first-child { color: #fff; font: 600 clamp(54px, 6vw, 86px)/1.02 var(--serif); font-style: normal; letter-spacing: 0; animation: none; }
+body.home-page .poster-event-bar > span:first-child { color: #fff; font: 600 clamp(36px, 4.7vw, 68px)/1.02 var(--serif); font-style: normal; letter-spacing: 0; white-space: nowrap; animation: none; }
 body.home-page .poster-event-bar > span:first-child em { display: inline-block; background: linear-gradient(100deg, #007f73, #d8ff3f, #ff6b5d, #007f73); background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; animation: title-shimmer 4s ease-in-out infinite, title-flicker 3.8s steps(1, end) infinite; }
 
 @media (max-width: 600px) {
-  body.home-page .poster-event-bar > span:first-child { font-size: 48px; }
+  body.home-page .poster-event-bar > span:first-child { font-size: clamp(24px, 7.1vw, 28px); }
 }
 
 body.page-shell:has(.page-nav a[href='software.html'][aria-current='page']) .page-hero { background-image: linear-gradient(90deg, rgba(4, 8, 17, 0.8), rgba(4, 8, 17, 0.18)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=88'); }
