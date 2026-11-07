@@ -1,54 +1,52 @@
-# Magic Jacky Commerce: Presentation Outline
+# Magic Jacky Commerce: Rubric-Aligned Presentation Outline
 
-## 1. Company Positioning and Five Business Pillars
-- Magic Jacky is a Taiwan-based cross-border commerce partner built around the Sentosa Glow Night Run case study.
-- Marketplace: localized event kits and sports merchandise.
-- Live Commerce: multilingual show planning, moderation, order capture, and fulfilment.
-- Software: web, app, CRM, payment, warehouse, and marketplace integration.
-- FX and Logistics: dynamic settlement estimates, duties, documentation, and route planning.
-- TikTok: creator matching, affiliate attribution, and Shop live operations.
+Public demo: https://magic-jacky-commerce.onrender.com
 
-## 2. System Architecture and Technology Stack
-- Frontend: responsive HTML, CSS, and vanilla JavaScript.
-- Backend: Python `ThreadingHTTPServer` with safe static-file serving and JSON APIs.
-- AI: Gemini or OpenAI when credentials are configured, with a local fallback assistant.
-- Deployment: GitHub `main` branch auto-deploys to Render.
-- Public URL: https://magic-jacky-commerce.onrender.com
+## Slide 1 - Problem, Company, and Case Study (Presenter 1)
+- Magic Jacky is a cross-border commerce case study for the Sentosa Glow Night Run event.
+- The site connects an event marketplace, live-commerce journey, creator commerce, software services, FX planning, and customer support.
+- Open the public site and show the responsive global navigation.
 
-## 3. ChatGPT Integration and Prompt Design
-- Jacky AI receives a bounded question and sanitized recent conversation history.
-- The system role is specialized for event commerce, FX settlement, TikTok live, software delivery, fulfilment, and compliance.
-- `/api/chat` and `/api/assistant` provide compatible chat routes.
-- If a provider is unavailable, the local assistant returns topic-aware answers instead of an error.
+## Slide 2 - Marketplace and Customer Journey (Presenter 1)
+- `shop.html` provides filterable event merchandise, prices, size information, a client-side bag, and a runner-entry demonstration.
+- A completed demo entry is stored in the browser and can be retrieved in `runner.html` with event guidance and a pickup code.
+- Accurate wording: prices are USD demo prices; sizes are displayed product information, not selectable variants; inventory is not live.
 
-## 4. FinTech Compliance Practice
-- GDPR-style cookie choice and privacy notice are shown across the site.
-- Checkout messaging surfaces 256-bit SSL, PCI-DSS Level 1, and AML/fraud monitoring controls.
-- FX dashboard labels rates as a demo snapshot and directs users to confirm final bank quotes.
-- The experience explains AML/KYC-aware workflows without claiming to perform bank-grade verification.
+## Slide 3 - Live Commerce and UX (Presenter 1)
+- `live.html` presents multilingual live-drop schedules and routes the selected live journey to the TikTok live-kit demonstration.
+- `tiktok.html` lets the user choose a creator-led kit and transfers its products to the Shop through browser storage.
+- This demonstrates the customer flow from content selection to basket, rather than a real video stream or TikTok API integration.
 
-## 5. User Journey Demonstration
-- Enter through the night-run hero and acknowledge cookie choices.
-- Browse the Shop, use filters, add items, inspect trust badges, and open the runner journey.
-- Open Cross-border tools for delivery, duty, and FX planning.
-- Use TikTok Live and Software pages to show the connected operating model.
+## Slide 4 - Cross-Border Operations (Presenter 2)
+- `crossborder.html` organizes the operating model into PAY, SHIP, and SERVE.
+- The delivery estimator calculates a transparent demo delivery, duty, and arrival estimate from market, value, and quantity inputs.
+- `fx.html` displays five-currency reference data and calculates a planning estimate. It is explicitly a demo snapshot, not a bank quote or locked FX rate.
 
-## 6. Feedback and Customer Engagement
-- A global feedback modal captures name, email, inquiry type, message, and rating.
-- Submission provides immediate confirmation and stores a local demo timestamp.
-- Jacky AI stays available on all child pages for contextual questions.
+## Slide 5 - TikTok and Software Services (Presenter 2)
+- The TikTok page explains creator matching, live-show planning, affiliate attribution, and fulfilment coordination.
+- The Software page presents discovery, web/mobile build, and integrations for payment, CRM, warehouse, order, and analytics workflows.
+- Accurate wording: these are Magic Jacky's proposed service capabilities demonstrated through the case study; the site does not connect to a real creator network, ERP, CRM, or TikTok Shop account.
 
-## 7. Visual Design and Mobile Readiness
-- Photographic hero media is paired with high-contrast overlays.
-- Mobile layouts prevent horizontal overflow, preserve active navigation tabs, and keep key numbers readable.
-- The visual system uses a consistent night-run palette, accessible contrast, and restrained motion.
+## Slide 6 - AI Integration and Architecture (Presenter 3)
+- Frontend: responsive HTML, CSS, and vanilla JavaScript. Backend: Python `ThreadingHTTPServer` with `/api/assistant`, `/api/chat`, and `/api/dbs-rates`.
+- Jacky AI has prompts for event kits, FX planning, AML/KYC-aware workflows, TikTok operations, software, and fulfilment.
+- Gemini or OpenAI is used only when a configured key is available; otherwise a topic-aware local fallback responds. Describe this as an AI-ready assistant, not a guarantee of ChatGPT availability.
 
-## 8. Deployment and Evaluation Checklist
-- Repository: https://github.com/JackyF12/magic-jacky-commerce
-- Live demo: https://magic-jacky-commerce.onrender.com
-- Test cookie choice, feedback modal, AI fallback, Shop security badges, Cross-border CTA, and mobile navigation.
+## Slide 7 - Privacy, Security, and Compliance (Presenter 3)
+- The site implements a persistent cookie choice, feedback form, input length limits for chat, and server-side path/history sanitization.
+- It explains GDPR-aligned consent, AML/KYC-aware process design, fraud controls, duty visibility, and consumer-protection workflows.
+- Accurate wording: security and PCI/AML badges are coursework demo representations of intended controls. The application does not process payments, conduct KYC, or hold a PCI-DSS certification.
 
-## 9. Future Roadmap
-- Replace demo FX rates with an authorized provider feed.
-- Persist feedback and order records in a secure CRM/database.
-- Add authenticated customer accounts and consent audit logs.
+## Slide 8 - Engagement, Design, and Deployment (Presenter 3)
+- Demonstrate the feedback modal, one-to-five rating, immediate local confirmation, child-page AI widget, responsive navigation, and the deployed Render URL.
+- Feedback and runner entries remain in browser storage in this prototype; a secure CRM/database is a next-step production requirement.
+
+## Slide 9 - Conclusion and Takeaways (Presenter 3)
+- The prototype demonstrates an end-to-end cross-border commerce experience: discover, choose a live kit, add products, create a runner entry, estimate delivery/FX, ask AI, and leave feedback.
+- Its strongest evidence is the publicly deployed, clickable flow and the visible link between commerce, content, operations, and customer support.
+- Production roadmap: authorized FX data, authenticated accounts, payment provider integration, persistent CRM/order storage, consent audit logs, real creator/platform APIs, and independently verified security controls.
+
+## Recommended 4-5 Minute Split
+- Presenter 1: Slides 1-3, 1 minute 20 seconds.
+- Presenter 2: Slides 4-5, 1 minute 10 seconds.
+- Presenter 3: Slides 6-9, 1 minute 40 seconds.

@@ -11,7 +11,7 @@ Action: Open https://magic-jacky-commerce.onrender.com and show the home hero.
 Action: Show the Cookie banner and click either `Accept All` or `Cookie Settings / Decline`.
 
 ## 0:50-1:25 | Marketplace and Checkout Security
-"In the Shop, customers can filter night-run equipment, add products to the bag, and prepare for a cross-border checkout flow. The security panel makes the intended protections visible: 256-bit SSL encryption, PCI-DSS Level 1 certification, and automated AML and fraud detection."
+"In the Shop, customers can filter night-run equipment, add products to the bag, and prepare for a cross-border checkout demonstration. The security panel communicates the intended SSL, PCI-aware, AML, and fraud-control design. In this coursework prototype, it is not a payment processor or a certified PCI-DSS service."
 
 Action: Open Shop, select a filter, add one product, open the bag, and point to the trust badges.
 
@@ -21,7 +21,7 @@ Action: Open Shop, select a filter, add one product, open the bag, and point to 
 Action: Open My Run and point to the event guidance and FAQ.
 
 ## 1:55-2:30 | Cross-border, FX, and Operations
-"The Cross-border page demonstrates delivery, duty, and settlement planning. It also links directly to the TikTok Live solution and custom FinTech and software delivery, showing that the services are one connected operating model rather than isolated pages."
+"The Cross-border page demonstrates delivery, duty, and settlement planning. Its rates and estimates are explicitly demo planning data, so final quotes and bank terms must be confirmed with a provider. It also links directly to the TikTok Live solution and custom FinTech and software delivery."
 
 Action: Open Cross-border, use the estimator, then point to the two CTA links.
 
